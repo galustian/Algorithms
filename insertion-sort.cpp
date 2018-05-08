@@ -13,11 +13,9 @@ void print_array(vector<int>& arr) {
 
 void InsertionSort(vector<int>& arr) {
     for (int i = 1; i < arr.size(); i++) {
-        int j = i;
-        int m = arr[i];
-        
-        while (m < arr[j-1] && j > 0) {
-            swap(arr[j], arr[j-1]);
+        int j = i;        
+        while (arr[j] < arr[j-1] && j > 0) {
+            swap(arr[j-1], arr[j]);
             j--;
         }
     }
