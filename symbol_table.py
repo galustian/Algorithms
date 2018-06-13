@@ -1,6 +1,6 @@
 import queue
 # Very simple implementation using a binary search tree
-# Asumes that keys are strings
+# Assumes that keys are strings
 class MapStr:
     class Node:
         def __init__(self, key, val):
