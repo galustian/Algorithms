@@ -16,11 +16,13 @@ class MapStr:
     def put_(self, key, val, node=None):
         if self.first == None:
             self.first = self.Node(key, val)
+            self.length = 1
             return
 
         # Create Node if does not exist
         if node == None:
             node = self.Node(key, val)
+            self.length += 1
             return
         
         # Update Node if exists
@@ -32,11 +34,13 @@ class MapStr:
         if key < node.key:
             if node.left == None:
                 node.left = self.Node(key, val)
+                self.length += 1
                 return
             self.put_(key, val, node.left)
         else:
             if node.right == None:
                 node.right = self.Node(key, val)
+                self.length += 1
                 return
             self.put_(key, val, node.right)
 
@@ -87,6 +91,9 @@ class MapStr:
         for tup in items:
             yield tup
     
+    def __len__(self):
+        return self.length
+    
 # Tests
 if __name__ == '__main__':
     str_map = MapStr()
@@ -104,6 +111,7 @@ if __name__ == '__main__':
 
     assert ('one' in str_map) == True
     assert ('two' in str_map) == False
+    assert len(str_map) == 5
 
     # Must be sorted alphabetically
     for key, val in str_map:
