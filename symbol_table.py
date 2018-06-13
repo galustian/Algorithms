@@ -68,14 +68,15 @@ class MapStr:
     def get_items(self, node, q=None):
         if node == None:
             return []
-        
-        q.put((node.key, node.val))
 
         if node.left != None:
             self.get_items(node.left, q)
+        
+        q.put((node.key, node.val))
+
         if node.right != None:
             self.get_items(node.right, q)     
-
+        
     def __iter__(self):
         q = queue.Queue()
         self.get_items(self.first, q=q)
@@ -94,7 +95,8 @@ if __name__ == '__main__':
     str_map.put('car', 42)
     str_map.put('auto', 69)
     str_map.put('auto', 666)
-    str_map.put('zz', 64)
+    str_map.put('zebra', 3.14)
+    str_map.put('yard', 64)
 
     assert str_map.get('car') == 42
     assert str_map.get('one') == 7
@@ -103,5 +105,6 @@ if __name__ == '__main__':
     assert ('one' in str_map) == True
     assert ('two' in str_map) == False
 
+    # Must be sorted alphabetically
     for key, val in str_map:
         print(key, val)
