@@ -15,8 +15,6 @@ public class Palindrome {
             reverseStr += stack.pop();
         }
         
-        System.out.println(reverseStr);
-        System.out.println(str);
         if (reverseStr.equals(str)) {
             System.out.println("Is a Palindrome!");
         } else {
