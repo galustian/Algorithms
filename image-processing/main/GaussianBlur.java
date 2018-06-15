@@ -47,12 +47,7 @@ public class GaussianBlur {
 
     // w and h are Image Middle-Points
     private int convolve(Color[] neighborPixels, BufferedImage img, int w, int h) {
-        
-        /*System.out.println("IMG Height: " + (img.getHeight()-1));
-        System.out.println("Current Point w: " + w);
-        System.out.println("Current Point h: " + h);*/
-        
-        // find how many 
+        // How many objects (non-null) in neighborPixels
         int neighborPixelsRange = 0;
         int pxMaxI = 0;
         while (pxMaxI < neighborPixels.length && neighborPixels[pxMaxI] != null) {
