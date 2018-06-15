@@ -1,2 +1,2 @@
 # Algorithms
-Implementations of common algorithms and data structures used in Computer Science.
+Implementations of common & famous algorithms and data structures (in development).
