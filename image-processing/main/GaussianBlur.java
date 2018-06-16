@@ -49,10 +49,8 @@ public class GaussianBlur {
     private int convolve(Color[] neighborPixels, BufferedImage img, int w, int h) {
         // How many objects (non-null) in neighborPixels
         int neighborPixelsRange = 0;
-        int pxMaxI = 0;
-        while (pxMaxI < neighborPixels.length && neighborPixels[pxMaxI] != null) {
-            pxMaxI++;
-            neighborPixelsRange = pxMaxI;
+        while (neighborPixelsRange < neighborPixels.length && neighborPixels[neighborPixelsRange] != null) {
+            neighborPixelsRange++;
         }
         var kernelPixels = getKernelPixels(neighborPixelsRange, img, w, h);
 
