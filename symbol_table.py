@@ -14,13 +14,13 @@ class MapStr:
         self.length = 0
 
     def put_(self, key, val, node=None):
-        if self.first == None:
+        if self.first is None:
             self.first = self.Node(key, val)
             self.length = 1
             return
 
         # Create Node if does not exist
-        if node == None:
+        if node is None:
             node = self.Node(key, val)
             self.length += 1
             return
@@ -32,13 +32,13 @@ class MapStr:
         
         # Traverse binary-tree
         if key < node.key:
-            if node.left == None:
+            if node.left is None:
                 node.left = self.Node(key, val)
                 self.length += 1
                 return
             self.put_(key, val, node.left)
         else:
-            if node.right == None:
+            if node.right is None:
                 node.right = self.Node(key, val)
                 self.length += 1
                 return
@@ -51,7 +51,7 @@ class MapStr:
         if depth == 0:
             return self.get(key, self.first, 1)
         # KeyError
-        if node == None:
+        if node is None:
             raise KeyError
         
         if key == node.key:
@@ -73,12 +73,12 @@ class MapStr:
         if node == None:
             return []
 
-        if node.left != None:
+        if node.left is not None:
             self.get_items(node.left, q)
         
         q.put((node.key, node.val))
 
-        if node.right != None:
+        if node.right is not None:
             self.get_items(node.right, q)     
         
     def __iter__(self):
