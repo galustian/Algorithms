@@ -31,28 +31,53 @@ final class TournamentSort {
             }
         } else if (!leftEmpty(node) && rightEmpty(node)) {
             node.value = node.left.value;
-            node.empty = false;
             node.left.empty = true;
+            node.empty = false;
             setNewWinnerAfterPop(node.left);
         } else if (leftEmpty(node) && !rightEmpty(node)) {
             node.value = node.right.value;
-            node.empty = false;
             node.right.empty = true;
+            node.empty = false;
             setNewWinnerAfterPop(node.right);
         }
     }
 
+    private static Node[] extendOddNodes(Node[] nodes) {
+        var tempNodes = new Node[nodes.length + 1];
+        
+        for (int i = 0; i < nodes.length; i++) {
+            tempNodes[i] = nodes[i];
+        }
+        
+        tempNodes[tempNodes.length-1] = new Node();
+        tempNodes[tempNodes.length-1].empty = true;
+        
+        return tempNodes;
+    }
+
     // Number of Nodes is always even
     private static Node createTree(Node[] nodes) {
-        assert nodes.length % 2 == 0 : "Number of Nodes not even";
+        if (nodes.length % 2 == 1) {
+            nodes = extendOddNodes(nodes);
+        }
 
+        assert nodes.length % 2 == 0;
+        
         var winnerNodes = new Node[nodes.length / 2];
 
-        for (int i = 0; i < winnerNodes.length; i++) {
+        for (int i = 0; i < nodes.length / 2; i++) {
             winnerNodes[i] = new Node();
 
             winnerNodes[i].left = nodes[i*2];
             winnerNodes[i].right = nodes[i*2+1];
+
+            // catch empty node (correction for odd number of sorting elements)
+            if (i == winnerNodes.length-1 && rightEmpty(winnerNodes[i])) {
+                winnerNodes[i].value = winnerNodes[i].left.value;
+                winnerNodes[i].left.empty = true;
+                setNewWinnerAfterPop(winnerNodes[i].left);
+                break;
+            }
 
             if (winnerNodes[i].left.value < winnerNodes[i].right.value) {
                 winnerNodes[i].value = winnerNodes[i].left.value;
@@ -79,11 +104,8 @@ final class TournamentSort {
         for (int i = 0; i < sortArray.length; i++) {
             nodes[i] = new Node(sortArray[i]);
         }
-        if (sortArray.length % 2 == 1)
-            nodes[nodes.length-1] = new Node();
-            nodes[nodes.length-1].empty = true;
 
-        assert nodes[sortArray.length-1].empty || sortArray.length % 2 == 0;
+        // assert nodes[sortArray.length-1].empty || sortArray.length % 2 == 0;
 
         var tree = createTree(nodes);
 
@@ -104,7 +126,5 @@ class Node {
     Node left;
     Node right;
     Node(){}
-    Node(double value) {
-        this.value = value;
-    }
+    Node(double value) { this.value = value; }
 }
