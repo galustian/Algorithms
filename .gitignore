@@ -1,6 +1,6 @@
 out/
 *.out
 *.class
-/.vscode
+.vscode/
 .idea/
 *.iml
