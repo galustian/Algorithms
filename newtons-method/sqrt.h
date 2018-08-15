@@ -1,7 +1,7 @@
 #define SHRESHOLD 0.01
 
 double squareRoot(double y) {
-    if (y == (double) 0) return 0;
+    if (y == 0.0) return 0;
     if (y < 0) {
         double d;
         *(int64_t*)&d = 0x7FF8000000000000;   // nan
