@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.pyx": "cython",
+        "cstdint": "cpp",
+        "cmath": "cpp"
+    }
+}
