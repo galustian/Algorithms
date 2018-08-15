@@ -20,9 +20,8 @@ def merge_sort(arr):
                 i2 += 1
 
         return merge_sorted
-        
-    else:
-        return arr
+    
+    return arr
     
 arr = [3, 3, 6, 0, -1, 1234, 44, -0.54, 45345455, 1, 10, -1, 42]
 print(merge_sort(arr))
