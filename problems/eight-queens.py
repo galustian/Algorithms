@@ -13,10 +13,10 @@ def check_row(row=0, row_exclude=None): # depth-first search
             for row_i in range(1, SIZE-row): # add row_i exclusions
                 if i+row_i < SIZE: row_exclude_cpy[row+row_i].add(i+row_i)
                 if i-row_i >= 0: row_exclude_cpy[row+row_i].add(i-row_i)
-                row_exclude_cpy[row+row_i].add(i)                    
-            
+                row_exclude_cpy[row+row_i].add(i)
+
             sum_ += check_row(row+1, row_exclude_cpy)
-        
+
         return sum_
 
 if __name__ == '__main__':
