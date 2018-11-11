@@ -28,7 +28,7 @@ def exclude_substrings_in_permutations(permutations, substring_list):
     return filtered_perms
 
 # you can compute this in constant time with the inclusion-exclusion principle.
-# this was just to check if my homework is indeed correct...
+# this was just to check if my homework was indeed correct :)
 if __name__ == '__main__':
     string = 'abcdefgh'
     string_permutations = get_all_perms(string)
@@ -38,3 +38,4 @@ if __name__ == '__main__':
     filtered_string_perms = exclude_substrings_in_permutations(string_permutations, ['acg', 'cgbe'])
 
     print("Filtered permutations:", len(filtered_string_perms))
+
