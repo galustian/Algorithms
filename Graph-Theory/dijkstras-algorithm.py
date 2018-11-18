@@ -51,11 +51,16 @@ class UndirectedGraph:
 if __name__ == '__main__':
     graph = UndirectedGraph()
     
-    graph.add_edge('a', 'b', 4)
-    graph.add_edge('a', 'c', 1)
-    graph.add_edge('c', 'f', 7)
-    graph.add_edge('b', 'f', 6)
-    graph.add_edge('b', 'u', 2)
-    graph.add_edge('u', 'f', 1)
+    graph.add_edge('v0', 'v1', 1)
+    graph.add_edge('v0', 'v5', 3)
+    graph.add_edge('v0', 'v4', 5)
+    graph.add_edge('v1', 'v2', 8)
+    graph.add_edge('v1', 'v4', 4)
+    graph.add_edge('v1', 'v5', 1)
+    graph.add_edge('v1', 'v3', 7)
+    graph.add_edge('v2', 'v3', 2)
+    graph.add_edge('v2', 'v4', 3)
+    graph.add_edge('v4', 'v3', 5)
+    graph.add_edge('v5', 'v4', 2)
 
-    print(graph.shortest_path('a', 'f'))
+    print(graph.shortest_path('v0', 'v2'))
